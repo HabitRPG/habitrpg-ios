@@ -489,6 +489,7 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
+"inventory.available_for" = "Available For %s";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
 "active" = "Active";
@@ -521,6 +522,7 @@
 "copied_to_clipboard" = "Copied to Clipboard";
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";
+"is_open" = "Open";
 "received_mystery_item" = "You open the box and receive %@";
 "monday" = "Monday";
 "tuesday" = "Tuesday";
@@ -1050,4 +1052,6 @@
 "unlocks_selecting_class_prompt" = "Now that you reached level 10, you can choose a class!";
 "pet_accessibility_label_raised" = "%@, Raised %d%%";
 "pet_accessibility_label_mount_owned" = "%@, Mount Owned";
-
+"new" = "New";
+"seasonal_potions_available" = "Seasonal Items available";
+"open_for" = "Open For %s";
