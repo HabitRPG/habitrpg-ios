@@ -367,7 +367,7 @@
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
 "inventory.hatched_sharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
-"inventory.no_longer_available" = "No Longer Available";
+"inventory.no_longer_available" = "No longer available";
 "pets" = "Pets";
 "mounts" = "Mounts";
 "stable.standard_pets" = "Standard Pets";
@@ -1054,5 +1054,5 @@
 "pet_accessibility_label_raised" = "%@, Raised %d%%";
 "pet_accessibility_label_mount_owned" = "%@, Mount Owned";
 "new" = "New";
-"seasonal_potions_available" = "Seasonal Items available";
-"open_for" = "Open For %s";
+"seasonal_potions_available" = "Seasonal items available";
+"open_for" = "Open for %s";

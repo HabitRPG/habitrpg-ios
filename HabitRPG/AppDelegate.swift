@@ -303,7 +303,10 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
                 .start()
         }
         
-        contentRepository.retrieveWorldState().observeCompleted {}
+        let lastWorldStateFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
+        if lastWorldStateFetch == nil || (lastWorldStateFetch?.timeIntervalSinceNow ?? 0) < -1800 {
+            contentRepository.retrieveWorldState().observeCompleted {}
+        }
     }
     
     @objc

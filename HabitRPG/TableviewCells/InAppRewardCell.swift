@@ -28,11 +28,13 @@ class InAppRewardCell: UICollectionViewCell {
             if itemsLeft > 0 {
                 infoLabel.isHidden = false
                 infoLabel.text = String(describing: itemsLeft)
-                infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-                infoLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-            } else {
-                infoImageView.isHidden = true
-                infoLabel.isHidden = true
+                if availableUntil != nil {
+                    infoLabel.backgroundColor = UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000)
+                    infoLabel.textColor = ThemeService.shared.theme.lightTextColor
+                } else {
+                    infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                    infoLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                }
             }
         }
     }
@@ -40,15 +42,12 @@ class InAppRewardCell: UICollectionViewCell {
     private var isLocked = false {
         didSet {
             if isLocked {
-                if (ThemeService.shared.theme.isDark) {
-                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLockedDark()
+                if availableUntil != nil {
+                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked(indicatorLocked: UIColor(red: 0.380, green: 0.200, blue: 0.706, alpha: 1.000))
                 } else {
-                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
+                    
                 }
                 infoImageView.isHidden = false
-                infoLabel.isHidden = true
-            } else {
-                infoImageView.isHidden = true
                 infoLabel.isHidden = true
             }
         }
@@ -59,9 +58,6 @@ class InAppRewardCell: UICollectionViewCell {
             if availableUntil != nil {
                 infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited()
                 infoImageView.isHidden = false
-                infoLabel.isHidden = true
-            } else if isLocked == false {
-                infoImageView.isHidden = true
                 infoLabel.isHidden = true
             }
         }
@@ -92,6 +88,13 @@ class InAppRewardCell: UICollectionViewCell {
     func configure(reward: InAppRewardProtocol, user: UserProtocol?) {
         var currency: Currency?
         let price = reward.value
+        infoImageView.isHidden = true
+        infoLabel.isHidden = true
+        if let date = reward.eventEnd {
+            availableUntil = date
+        } else {
+            availableUntil = nil
+        }
         currencyView.amount = Int(reward.value)
         imageName = reward.imageName ?? ""
         itemName = reward.text ?? ""
@@ -109,12 +112,7 @@ class InAppRewardCell: UICollectionViewCell {
         if let lastPurchased = reward.lastPurchased, wasRecentlyPurchased(lastPurchased) {
             showPurchaseConfirmation()
         }
-        
-        if let date = reward.eventEnd {
-            availableUntil = date
-        } else {
-            availableUntil = nil
-        }
+
         applyAccessibility()
         
         if let lockedReason = reward.shortLockedReason, reward.locked {

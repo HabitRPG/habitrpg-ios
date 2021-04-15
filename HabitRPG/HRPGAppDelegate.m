@@ -67,6 +67,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [self.swiftAppDelegate setupUserManager];
     [self.swiftAppDelegate setupTheme];
+    [self.swiftAppDelegate retrieveContent];
 }
 
 - (void)cleanAndRefresh:(UIApplication *)application {
